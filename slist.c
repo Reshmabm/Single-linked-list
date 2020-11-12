@@ -1,28 +1,18 @@
-/*  This file contains all the function definations 
-   
-    Author: Priyanshu dugaya
-    Reg no: 201046023
-    Dept: Big data and data analytics
-*/
 
 #include <stdlib.h>
 #include <assert.h>
 #include "slist.h"
 
-// intialization of functions
 Slist  slist_new(){
 	Slist s1 = {NULL,NULL,0};
 	return s1;
 }
-// to check length of the list
+
 uint32_t slist_length(const Slist *list){
     assert(list != NULL);
 	return list->length;
 } 
 
-// Helper function that is not visible outside
-
-//to create a new node
 static Node* _get_new_node_(int32_t val){
 	Node *newnode = (Node*)malloc(sizeof(Node));
 	newnode->data=val;
@@ -30,7 +20,7 @@ static Node* _get_new_node_(int32_t val){
 	return newnode;
 } 
 
-// to add node at the head of list
+
 Slist*  slist_addnode_head(Slist *list,int32_t val){
 	assert(list != NULL);
 	Node *new_node= _get_new_node_(val);
@@ -43,7 +33,7 @@ Slist*  slist_addnode_head(Slist *list,int32_t val){
 	assert((list->length == 1) && (list->head == list->tail) || (list->length>1) && (list->head) != list->tail);
 	return list;
 }
-// to add node at tail of the list
+
 Slist* slist_addnode_tail(Slist *list, int32_t val){
 	assert(list!=NULL);
 	Node *new_node = _get_new_node_(val);
@@ -57,7 +47,7 @@ Slist* slist_addnode_tail(Slist *list, int32_t val){
 	assert( (list->length == 1) && (list->head == list->tail) || (list->length>1) && (list->head)!=list->tail);
 	return list;
 }
-//to lookup a data is it present or not in a list
+
 uint8_t slist_lookup(const Slist *list,int32_t key){
 	assert(list !=NULL);
 	Node *cur = list->head;
@@ -69,7 +59,7 @@ uint8_t slist_lookup(const Slist *list,int32_t key){
 	}
 	return (cur != NULL);
 }
-// to delete a node from head
+
 Slist* slist_deletenode_head(Slist *list){
 	assert(list!=NULL);
 	Node *temp;
@@ -77,14 +67,14 @@ Slist* slist_deletenode_head(Slist *list){
 		temp = list->head;
 		list->head = list->head->next;
 		if(list->head != NULL){
-			list->tail=NULL;            // if only one node is there and we deleted it so tail should also be null
+			list->tail=NULL;            
 		}
 		--list->length;
 		free(temp);	
 	}
 	return list;
 }
-//to delete a node from tail
+
 Slist* slist_deletenode_tail(Slist *list){
 	assert(list!=NULL);
 	Node *cur;
@@ -101,7 +91,7 @@ Slist* slist_deletenode_tail(Slist *list){
 	--list->length;
 	return list;
 }
-// to delete the node after a perticular value
+
 Slist* slist_deletenode_any(Slist *list,int32_t val){
 	assert(list!=NULL);
 	Node *temp;
@@ -124,7 +114,7 @@ Slist* slist_deletenode_any(Slist *list,int32_t val){
     }
     return list;
 }
-// to find a minimum element from list
+
 int32_t slist_min(Slist *list){
 	assert(list!=NULL);
 	int32_t min;
@@ -143,7 +133,7 @@ int32_t slist_min(Slist *list){
 	}
 	return min;
 }
-// to find maximum element from the list
+
 int32_t slist_max(Slist *list){
 		assert(list!=NULL);
 	int32_t max;
@@ -163,7 +153,7 @@ int32_t slist_max(Slist *list){
 	}
 	return max;
 }	
-// to reverse the list 
+
 Slist* slist_reverse(Slist *list){
 	    assert(list!=NULL);
 	    Node *cur = list->head;
@@ -179,7 +169,7 @@ Slist* slist_reverse(Slist *list){
         list->head = prev;
         return list;
 }
-// to check 2 list are same
+
  int32_t slist_same(Slist *list1,Slist *list2){
 	assert(list1!=NULL && list2!=NULL);
 	Node *cur1=list1->head;
@@ -190,7 +180,7 @@ Slist* slist_reverse(Slist *list){
 	}
 		return (cur1->next==NULL && cur2->next==NULL);
 	}
-// to return the union of 2 list
+
 Slist* slist_union(Slist *list1,Slist *list2){
 	assert(list1!=NULL && list2!=NULL);
 	Slist res = slist_new();
@@ -210,7 +200,7 @@ Slist* slist_union(Slist *list1,Slist *list2){
 	
     return reslist; 
 }
-// to return the intersection of 2 list
+
 Slist* slist_inter(Slist *list1,Slist *list2){
 	assert(list1!=NULL && list2!=NULL);
 	Slist res = slist_new();
