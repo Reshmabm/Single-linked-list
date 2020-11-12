@@ -1,19 +1,9 @@
-/* This code is implementing all the basic operations that can be don on a single linked list
-  
-    Author: PRIYANSHU DUGAYA
-    Reg no: 201046023
-    Dept: BIG DATA AND DATA ANALYTICS
-    
-    THIS IS AN ASSERT BASED CODE 
 
-
-*/
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <assert.h>
 #include "slist.h"
-/* run this program using the console pauser or add your own getch, system("pause") or input loop */
 
 void test_empty_list(){
 	Slist s1 = slist_new();
